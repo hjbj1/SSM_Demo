@@ -16,8 +16,6 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-
-
     @RequestMapping("findAll.do")
     public ModelAndView findAll(ModelAndView modelAndView){
         List<Order> orderLists = orderService.findAll();

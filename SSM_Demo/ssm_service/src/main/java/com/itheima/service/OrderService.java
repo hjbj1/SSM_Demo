@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-@Service
 public interface OrderService {
     /**
      * 查询所有订单信息

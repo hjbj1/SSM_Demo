@@ -1,5 +1,6 @@
 package com.itheima.domain;
 
+import com.itheima.utils.DateUtils;
 import lombok.Data;
 import lombok.ToString;
 
@@ -23,4 +24,23 @@ public class Order {
     private Integer payType;
     private String payTypeStr;
     private String orderDesc;
+
+
+    public String getOrderTimeStr() {
+        if(orderTime!=null){
+            orderTimeStr= DateUtils.dateToString(orderTime);
+        }
+        return orderTimeStr;
+    }
+
+    public String getOrderStatusStr() {
+            // 状态 0 关闭 1 开启
+            if(orderStatus == 0){
+                orderStatusStr = "未支付";
+            }
+            if(orderStatus == 1){
+                orderStatusStr = "已支付";
+            }
+        return orderStatusStr;
+    }
 }
