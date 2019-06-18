@@ -23,4 +23,5 @@ public interface ProductDao {
     @Insert("insert into product(productNum,productName,cityName,departureTime,productPrice,productDesc,productStatus) values " +
             "(#{productNum},#{productName},#{cityName},#{departureTime},#{productPrice},#{productDesc},#{productStatus})")
     void saveProduct(Product product);
+
 }
