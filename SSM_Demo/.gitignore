@@ -6,9 +6,9 @@
 .idea
 *.iml
 *target
-*css
-*img
-*plugins
+###*css
+###*img
+###*plugins
 
 
 
