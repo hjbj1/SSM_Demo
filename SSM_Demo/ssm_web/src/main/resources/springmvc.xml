@@ -32,7 +32,6 @@
 
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/img/" mapping="/img/**"/>
-    <mvc:resources location="/plugins/" mapping="/plugins/**"/>
 
     <!-- 开启对SpringMVC注解的支持 -->
     <mvc:annotation-driven conversion-service="converterService"/>
