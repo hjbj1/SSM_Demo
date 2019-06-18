@@ -12,5 +12,5 @@ public interface OrderService {
      * 查询所有订单信息
      * @return
      */
-    List<Order> findAll();
+    List<Order> findAll(Integer page,Integer pageSize);
 }

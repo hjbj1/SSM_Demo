@@ -1,5 +1,6 @@
 package com.itheima.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.dao.OrderDao;
 import com.itheima.domain.Order;
 import com.itheima.service.OrderService;
@@ -16,7 +17,8 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public List<Order> findAll() {
+    public List<Order> findAll(Integer page,Integer pageSize) {
+        PageHelper.startPage(page,pageSize);
         return orderDao.findAll();
     }
 }
