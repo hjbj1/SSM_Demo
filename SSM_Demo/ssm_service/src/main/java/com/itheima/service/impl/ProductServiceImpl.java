@@ -16,11 +16,20 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
     @Override
     public List<Product> findAll() {
-        return productDao.findAll();
+        try {
+            return productDao.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public void saveProduct(Product product) {
-        productDao.saveProduct(product);
+        try {
+            productDao.saveProduct(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

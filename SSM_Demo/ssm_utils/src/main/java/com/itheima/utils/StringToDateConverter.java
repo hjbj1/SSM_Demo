@@ -9,7 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class StringToDateConverter implements Converter<String,Date> {
-
+    /**
+     * @DateTimeFomate("yyyy-MM-dd HH-mm");注解实现
+     * @param source
+     * @return
+     */
     @Override
     public Date convert(String source) {
         DateFormat df;
@@ -17,7 +21,7 @@ public class StringToDateConverter implements Converter<String,Date> {
             if (StringUtils.isEmpty(source)){
                 throw new RuntimeException("请输入您的日期");
             }
-            df = new SimpleDateFormat("yyyy-MM-dd ");
+            df = new SimpleDateFormat("yyyy-MM-dd HH-mm");
             Date date = df.parse(source);
             return date;
         } catch (ParseException e) {

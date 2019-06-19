@@ -19,11 +19,21 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> findAll(Integer page,Integer pageSize) {
         PageHelper.startPage(page,pageSize);
-        return orderDao.findAll();
+        try {
+            return orderDao.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public Order findById(String id) {
-        return orderDao.findById(id);
+        try {
+            return orderDao.findById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
