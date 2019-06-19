@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.management.relation.RoleInfo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class UserServiceImpl implements UserService {
         List<SimpleGrantedAuthority> authorities= new ArrayList<>();
         List<Role> roles = userInfo.getRoles();
         for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+            authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getRoleName()));
         }
         return authorities;
     }
