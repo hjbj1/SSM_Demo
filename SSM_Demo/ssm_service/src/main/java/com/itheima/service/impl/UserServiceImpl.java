@@ -50,4 +50,9 @@ public class UserServiceImpl implements UserService {
     public List<UserInfo> findAll() {
         return userDao.findAll();
     }
+
+    @Override
+    public UserInfo findById(String id) {
+        return null;
+    }
 }

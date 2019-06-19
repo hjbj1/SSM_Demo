@@ -23,4 +23,13 @@ public class UserController {
         return modelAndView;
     }
 
+
+    @RequestMapping("/findById.do")
+    public ModelAndView findById(ModelAndView modelAndView,String id){
+        UserInfo user = userService.findById(id);
+        modelAndView.addObject("user",user);
+        modelAndView.setViewName("user-show");
+        return modelAndView;
+    }
+
 }
