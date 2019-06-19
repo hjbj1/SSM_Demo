@@ -53,6 +53,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfo findById(String id) {
-        return null;
+        return userDao.findById(id);
     }
 }

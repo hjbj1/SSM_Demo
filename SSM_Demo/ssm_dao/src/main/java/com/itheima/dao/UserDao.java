@@ -28,4 +28,8 @@ public interface UserDao {
 
     @Select("select * from users")
     List<UserInfo> findAll();
+
+
+
+    UserInfo findById(String id);
 }
