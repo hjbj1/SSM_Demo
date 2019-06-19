@@ -43,4 +43,15 @@ public class Order {
             }
         return orderStatusStr;
     }
+
+    public String getPayTypeStr() {
+        if(payType == 0){
+            payTypeStr= "支付宝";
+        }else if(payType == 1){
+            payTypeStr= "微信";
+        }else {
+            payTypeStr= "其它";
+        }
+        return payTypeStr;
+    }
 }

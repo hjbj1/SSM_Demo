@@ -28,4 +28,13 @@ public class OrderController {
         modelAndView.setViewName("order-list");
         return modelAndView;
     }
+
+
+    @RequestMapping("findById.do")
+    public ModelAndView findById(String id,ModelAndView modelAndView){
+        Order order = orderService.findById(id);
+        modelAndView.addObject("orders",order);
+        modelAndView.setViewName("orders-show");
+        return modelAndView;
+    }
 }

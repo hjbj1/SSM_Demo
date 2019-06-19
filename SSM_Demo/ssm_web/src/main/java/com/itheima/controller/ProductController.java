@@ -40,6 +40,6 @@ public class ProductController {
     @RequestMapping("/save.do")
     public String saveProduct(Product product){
         productService.saveProduct(product);
-        return "redirect:findAll";
+        return "redirect:findAll.do";
     }
 }

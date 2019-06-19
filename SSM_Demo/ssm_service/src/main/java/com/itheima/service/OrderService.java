@@ -13,4 +13,6 @@ public interface OrderService {
      * @return
      */
     List<Order> findAll(Integer page,Integer pageSize);
+
+    Order findById(String id);
 }
