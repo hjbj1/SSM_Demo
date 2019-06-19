@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 public interface UserDao {
 
 
@@ -19,4 +21,11 @@ public interface UserDao {
             @Result(column = "id",property = "roles",many = @Many(select = "com.itheima.dao.RoleDao.findById"))
     })
     public UserInfo findByUserName(String username) throws Exception;
+
+
+
+
+
+    @Select("select * from users")
+    List<UserInfo> findAll();
 }

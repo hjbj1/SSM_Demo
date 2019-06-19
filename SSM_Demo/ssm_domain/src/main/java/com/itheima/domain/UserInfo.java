@@ -19,7 +19,7 @@ public class UserInfo {
     private List<Role> roles;
 
 
-    /*public String getStatusStr(){
+    public String getStatusStr(){
         if (status == 0){
             statusStr = "未开启";
         }
@@ -27,5 +27,5 @@ public class UserInfo {
             statusStr = "开启";
         }
         return statusStr;
-    }*/
+    }
 }
