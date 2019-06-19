@@ -12,7 +12,7 @@
         <module>ssm_service</module>
         <module>ssm_domain</module>
         <module>ssm_utils</module>
-        <module>ssm_web</module>
+        <!--<module>ssm_web</module>-->
     </modules>
     <packaging>pom</packaging>
 
