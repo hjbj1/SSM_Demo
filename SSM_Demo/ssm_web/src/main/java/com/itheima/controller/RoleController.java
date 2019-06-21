@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.domain.Permission;
 import com.itheima.domain.Role;
 import com.itheima.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,27 @@ public class RoleController {
     @RequestMapping("/saveRole.do")
     public String save(Role role) {
         roleService.saveRole(role);
+        return "redirect:findAll.do";
+    }
+
+
+
+
+    @RequestMapping("/findRoleByIdAndExcludePermission.do")
+    public ModelAndView findRoleByIdAndExcludePermission(String id,ModelAndView modelAndView){
+        Role role = roleService.findById(id);
+        modelAndView.addObject("role",role);
+        List<Permission> permissions = roleService.findExcludeRole(id);
+        modelAndView.addObject("permissions",permissions);
+        modelAndView.setViewName("role-perssion-add");
+        return modelAndView;
+    }
+
+
+
+    @RequestMapping("/addPermissionToRole.do")
+    public String addPermissionToRole(String roleId,String[] pms){
+        roleService.addPermissionToRole(roleId,pms);
         return "redirect:findAll.do";
     }
 }

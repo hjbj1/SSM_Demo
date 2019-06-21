@@ -1,7 +1,9 @@
 package com.itheima.dao;
 
+import com.itheima.domain.Permission;
 import com.itheima.domain.Role;
 import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -24,4 +26,17 @@ public interface RoleDao {
 
     @Insert("insert into role(roleName,roleDesc) values (#{roleName},#{roleDesc})")
     void saveRole(Role role) throws Exception;
+
+
+    @Select("select * from role where id = #{id}")
+    Role findByIdOne(String id) throws Exception;
+
+
+    @Select("select * from permission where id not in (select permissionid from role_permission where roleid = #{id})")
+    List<Permission> findExcludeRole(String id);
+
+
+
+    @Insert("insert into role_permission (roleid,permissionid) values (#{roleId},#{pid})")
+    void addPermissionToRole(@Param("roleId") String roleId, @Param("pid")String pid) throws Exception;
 }
