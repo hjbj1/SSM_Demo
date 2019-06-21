@@ -7,4 +7,6 @@ import java.util.List;
 public interface PermissionsService {
 
     List<Permission> findAll();
+
+    void savePermission(Permission permission);
 }

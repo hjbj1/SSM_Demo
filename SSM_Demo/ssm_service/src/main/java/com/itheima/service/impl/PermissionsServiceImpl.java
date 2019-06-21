@@ -25,4 +25,9 @@ public class PermissionsServiceImpl implements PermissionsService {
             return null;
         }
     }
+
+    @Override
+    public void savePermission(Permission permission) {
+        permissionDao.savePermission(permission);
+    }
 }

@@ -23,4 +23,11 @@ public class PermissionController {
         modelAndView.setViewName("permission-list");
         return modelAndView;
     }
+
+
+    @RequestMapping("/savePermission.do")
+    public String save(Permission permission) {
+        permissionsService.savePermission(permission);
+        return "redirect:findAll.do";
+    }
 }
