@@ -35,8 +35,6 @@ public class UserServiceImpl implements UserService {
 
         return user;
     }
-
-
     public List<SimpleGrantedAuthority> getAuthorities(UserInfo userInfo){
         List<SimpleGrantedAuthority> authorities= new ArrayList<>();
         List<Role> roles = userInfo.getRoles();
@@ -53,6 +51,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfo findById(String id) {
-        return userDao.findById(id);
+        try {
+            return userDao.findById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

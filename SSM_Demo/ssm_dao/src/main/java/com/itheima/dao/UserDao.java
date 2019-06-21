@@ -18,9 +18,9 @@ public interface UserDao {
             @Result(column = "password",property = "password"),
             @Result(column = "phoneNum",property = "phoneNum"),
             @Result(column = "status",property = "status"),
-            @Result(column = "id",property = "roles",many = @Many(select = "com.itheima.dao.RoleDao.findById"))
+            @Result(column = "id",property = "roles",javaType = List.class,many = @Many(select = "com.itheima.dao.RoleDao.findById"))
     })
-    public UserInfo findByUserName(String username) throws Exception;
+    UserInfo findByUserName(String username) throws Exception;
 
 
 
@@ -29,7 +29,14 @@ public interface UserDao {
     @Select("select * from users")
     List<UserInfo> findAll();
 
-
-
-    UserInfo findById(String id);
+    @Select("select * from users where id = #{id}")
+    @Results({@Result(id = true, property = "id", column = "id"),
+            @Result(column = "email", property = "email"),
+            @Result(column = "username",property = "username"),
+            @Result(column = "password",property = "password"),
+            @Result(column = "phoneNum",property = "phoneNum"),
+            @Result(column = "status",property = "status"),
+            @Result(column = "id",property = "roles",javaType = List.class,many = @Many(select = "com.itheima.dao.RoleDao.findById"))
+    })
+    UserInfo findById(String id) throws Exception;
 }
