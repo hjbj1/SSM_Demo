@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.domain.Role;
 import com.itheima.domain.UserInfo;
 import com.itheima.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,24 @@ public class UserController {
         modelAndView.addObject("user",user);
         modelAndView.setViewName("user-show");
         return modelAndView;
+    }
+
+
+
+    @RequestMapping("/findUserByIdAndExcludeRole.do")
+    public ModelAndView findUserByIdAndExcludeRole(String id,ModelAndView modelAndView){
+        UserInfo user = userService.findById(id);
+        modelAndView.addObject("user",user);
+        List<Role> roles = userService.findExcludeRole(id);
+        modelAndView.addObject("roles",roles);
+        modelAndView.setViewName("user-role-add");
+        return modelAndView;
+    }
+
+    @RequestMapping("/addRoleToUser.do")
+    public String addRoleToUser(String userId,String[] ids){
+        userService.addRoleToUser(userId,ids);
+        return "redirect:findAll.do";
     }
 
 }

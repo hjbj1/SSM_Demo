@@ -1,5 +1,6 @@
 package com.itheima.dao;
 
+import com.itheima.domain.Role;
 import com.itheima.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
 
@@ -40,4 +41,11 @@ public interface UserDao {
 
     @Insert("insert into users(username,email,password,phoneNum,status) values (#{username},#{email},#{password},#{phoneNum},#{status})")
     void saveUser(UserInfo userInfo) throws Exception;
+
+    @Select("select * from role where id not in (select roleid from users_role where userid = #{id})")
+    List<Role> findExcludeRole(String id) throws Exception;
+
+
+    @Insert("insert into users_role (userid,roleid) values (#{userId},#{rid})")
+    void addRoleToUser(@Param("userId") String userId,@Param("rid") String rid) throws Exception;
 }

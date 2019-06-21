@@ -41,9 +41,7 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         User user = new User(userInfo.getUsername(),userInfo.getPassword(),userInfo.getStatus() == 0 ? false : true,true,true,true,getAuthorities(userInfo));
-
         return user;
     }
 
@@ -87,6 +85,27 @@ public class UserServiceImpl implements UserService {
             userDao.saveUser(userInfo);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<Role> findExcludeRole(String id) {
+        try {
+            return userDao.findExcludeRole(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public void addRoleToUser(String userId, String[] ids) {
+        for (String rid : ids) {
+            try {
+                userDao.addRoleToUser(userId,rid);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
