@@ -9,4 +9,6 @@ public interface UserService extends UserDetailsService{
     List<UserInfo> findAll();
 
     UserInfo findById(String id);
+
+    void saveUser(UserInfo userInfo);
 }

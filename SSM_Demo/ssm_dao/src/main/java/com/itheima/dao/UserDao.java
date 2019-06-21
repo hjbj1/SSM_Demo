@@ -1,10 +1,7 @@
 package com.itheima.dao;
 
 import com.itheima.domain.UserInfo;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -27,7 +24,7 @@ public interface UserDao {
 
 
     @Select("select * from users")
-    List<UserInfo> findAll();
+    List<UserInfo> findAll() throws Exception;
 
     @Select("select * from users where id = #{id}")
     @Results({@Result(id = true, property = "id", column = "id"),
@@ -39,4 +36,8 @@ public interface UserDao {
             @Result(column = "id",property = "roles",javaType = List.class,many = @Many(select = "com.itheima.dao.RoleDao.findById"))
     })
     UserInfo findById(String id) throws Exception;
+
+
+    @Insert("insert into users(username,email,password,phoneNum,status) values (#{username},#{email},#{password},#{phoneNum},#{status})")
+    void saveUser(UserInfo userInfo) throws Exception;
 }

@@ -23,6 +23,11 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping("/saveUser")
+    public String saveUser(UserInfo userInfo){
+        userService.saveUser(userInfo);
+        return "redirect:findAll.do";
+    }
 
     @RequestMapping("/findById.do")
     public ModelAndView findById(ModelAndView modelAndView,String id){

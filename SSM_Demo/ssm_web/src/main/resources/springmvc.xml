@@ -29,7 +29,6 @@
         </property>
     </bean>
 
-
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/img/" mapping="/img/**"/>
 
