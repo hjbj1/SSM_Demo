@@ -23,4 +23,13 @@ public class RoleServiceImpl implements RoleService {
             return null;
         }
     }
+
+    @Override
+    public void saveRole(Role role) {
+        try {
+            roleDao.saveRole(role);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

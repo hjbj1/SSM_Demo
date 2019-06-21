@@ -23,4 +23,11 @@ public class RoleController {
         modelAndView.setViewName("role-list");
         return modelAndView;
     }
+
+
+    @RequestMapping("/saveRole.do")
+    public String save(Role role) {
+        roleService.saveRole(role);
+        return "redirect:findAll.do";
+    }
 }
