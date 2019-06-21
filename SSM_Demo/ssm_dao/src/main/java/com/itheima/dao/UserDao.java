@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserDao {
 
 
-    @Select("select * from users")
+    @Select("select * from users where username = #{username}")
     @Results({@Result(id = true, property = "id", column = "id"),
             @Result(column = "email", property = "email"),
             @Result(column = "username",property = "username"),

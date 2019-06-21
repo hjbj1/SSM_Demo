@@ -12,7 +12,6 @@ public interface ProductDao {
      * 查询所有产品信息
      * @return
      */
-
     @Select("select * from product")
     List<Product> findAll() throws Exception;
 
