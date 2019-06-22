@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.itheima.domain.Order;
 import com.itheima.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping("findAll.do")
+    @Secured("ROLE_ADMIN")      //Secured注解需要输入全角色名称,是security里面的,不需要导包
     public ModelAndView findAll(@RequestParam(name = "page",required = true,defaultValue = "1") Integer page,
                                 @RequestParam(name = "pageSize",required = true,defaultValue = "5") Integer pageSize,
                                 ModelAndView modelAndView){

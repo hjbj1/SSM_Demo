@@ -4,12 +4,14 @@ package com.itheima.controller;
 import com.itheima.domain.Product;
 import com.itheima.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 
@@ -25,6 +27,7 @@ public class ProductController {
      * @return
      */
     @RequestMapping("/findAll.do")
+    @RolesAllowed("ADMIN")              //RolesAllowed需要role的名称,需要开启和导包
     public ModelAndView findAll(ModelAndView modelAndView){
         List<Product> products = productService.findAll();
         modelAndView.addObject("productlist",products);
