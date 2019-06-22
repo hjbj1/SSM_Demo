@@ -37,8 +37,8 @@ public class RoleController {
 
     @RequestMapping("/findRoleByIdAndExcludePermission.do")
     public ModelAndView findRoleByIdAndExcludePermission(String id,ModelAndView modelAndView){
-        Role role = roleService.findById(id);
-        modelAndView.addObject("role",role);
+//        Role role = roleService.findById(id);
+        modelAndView.addObject("roleid",id);
         List<Permission> permissions = roleService.findExcludeRole(id);
         modelAndView.addObject("permissions",permissions);
         modelAndView.setViewName("role-perssion-add");

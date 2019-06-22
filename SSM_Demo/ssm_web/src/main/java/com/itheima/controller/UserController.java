@@ -45,8 +45,8 @@ public class UserController {
 
     @RequestMapping("/findUserByIdAndExcludeRole.do")
     public ModelAndView findUserByIdAndExcludeRole(String id,ModelAndView modelAndView){
-        UserInfo user = userService.findById(id);
-        modelAndView.addObject("user",user);
+//        UserInfo user = userService.findById(id);
+        modelAndView.addObject("id",id);
         List<Role> roles = userService.findExcludeRole(id);
         modelAndView.addObject("roles",roles);
         modelAndView.setViewName("user-role-add");
