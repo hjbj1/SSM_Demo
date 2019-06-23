@@ -18,7 +18,7 @@ public class SysLogController {
     private SysLogService sysLogService;
 
 
-    @RequestMapping("findAll.do")
+    @RequestMapping("/findAll.do")
     public ModelAndView findAll(ModelAndView modelAndView){
         List<SysLog> sysLogs = sysLogService.findAll();
         modelAndView.addObject("sysLogs",sysLogs);

@@ -8,7 +8,9 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,7 @@ import java.util.Date;
 
 @Component
 @Aspect
+@Scope("prototype")
 public class LogAop {
 
     @Autowired
@@ -42,7 +45,7 @@ public class LogAop {
     public void before(JoinPoint jp) throws Exception {
         classType = jp.getTarget().getClass();
         startTime = new Date();
-        String methodName = jp.getSignature().getName();
+        /*String methodName = jp.getSignature().getName();
         Object[] args = jp.getArgs();
         if(args == null || args.length == 0){
             method = classType.getMethod(methodName);
@@ -53,7 +56,9 @@ public class LogAop {
             }
 
             method = classType.getMethod(methodName,argsClass);
-         }
+         }*/
+        MethodSignature signature = (MethodSignature) jp.getSignature();
+        method = signature.getMethod();
     }
 
 
@@ -63,7 +68,7 @@ public class LogAop {
 
         //获取url
         if(classType != null && method != null && classType != LogAop.class){
-            RequestMapping ra = (RequestMapping) classType.getAnnotation(RequestMapping.class);
+            /*RequestMapping ra = (RequestMapping) classType.getAnnotation(RequestMapping.class);
             if(ra != null){
                 String classUrl = ra.value()[0];
                 RequestMapping ma = method.getAnnotation(RequestMapping.class);
@@ -71,10 +76,10 @@ public class LogAop {
                     String methodUrl = ma.value()[0];
                     url = classUrl + methodUrl;
                 }
-            }
+            }*/
 
+            url = request.getRequestURL().toString();
         }
-
         ip = request.getRemoteAddr();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         username = user.getUsername();
